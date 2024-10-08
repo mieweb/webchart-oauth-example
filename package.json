@@ -4,11 +4,16 @@
   "description": "A Node.js application for WebChart FHIR interface with OAuth2 authentication",
   "main": "webchart-example.js",
   "scripts": {
-    "start": "node webchart-example.js"
+    "start": "node webchart-example.js",
+    "test": "concurrently --kill-others \"node webchart-example.js\" \"node puppeteer-test.js\""
   },
   "dependencies": {
     "oauth": "^0.10.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "puppeteer": "^23.5.1"
+  }
 }

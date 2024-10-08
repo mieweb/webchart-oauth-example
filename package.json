@@ -5,7 +5,7 @@
   "main": "webchart-example.js",
   "scripts": {
     "start": "node webchart-example.js",
-    "test": "concurrently --kill-others \"node webchart-example.js\" \"node puppeteer-test.js\""
+    "test": "concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\""
   },
   "dependencies": {
     "oauth": "^0.10.0"

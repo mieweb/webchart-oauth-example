@@ -10,27 +10,38 @@ if (!password) {
 }
 
 const launchOptions = {  };
-//const launchOptions = { headless: false, args: ['--start-maximized'] };
+//const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'] };
 
 (async () => {
+    console.log('Launching browser...');
     const browser = await puppeteer.launch(launchOptions);
+    console.log('Browser launched.');
+
+    console.log('Opening new page...');
     const page = await browser.newPage();
+    console.log('New page opened.');
+
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
 
     {
         const targetPage = page;
+        console.log('Setting viewport...');
         await targetPage.setViewport({
             width: 645,
             height: 736
-        })
+        });
+        console.log('Viewport set.');
     }
     {
         const targetPage = page;
+        console.log('Navigating to http://localhost:8080/...');
         await targetPage.goto('http://localhost:8080/');
+        console.log('Navigation complete.');
     }
     {
         const targetPage = page;
+        console.log('Waiting for "Get Code" button and clicking it...');
         const promises = [];
         const startWaitingForEvents = () => {
             promises.push(targetPage.waitForNavigation());
@@ -51,9 +62,11 @@ const launchOptions = {  };
               },
             });
         await Promise.all(promises);
+        console.log('"Get Code" button clicked.');
     }
     {
         const targetPage = page;
+        console.log('Filling in username...');
         await puppeteer.Locator.race([
             targetPage.locator('::-p-aria(Username)'),
             targetPage.locator('#login_user'),
@@ -62,9 +75,11 @@ const launchOptions = {  };
         ])
             .setTimeout(timeout)
             .fill('whart123');
+        console.log('Username filled.');
     }
     {
         const targetPage = page;
+        console.log('Clicking "Next" button...');
         await puppeteer.Locator.race([
             targetPage.locator('::-p-aria(Next)'),
             targetPage.locator('#login_submit'),
@@ -78,9 +93,11 @@ const launchOptions = {  };
                 y: 24.296875,
               },
             });
+        console.log('"Next" button clicked.');
     }
     {
         const targetPage = page;
+        console.log('Clicking password field...');
         await puppeteer.Locator.race([
             targetPage.locator('::-p-aria(Password)'),
             targetPage.locator('#login_passwd'),
@@ -94,9 +111,11 @@ const launchOptions = {  };
                 y: 23.796875,
               },
             });
+        console.log('Password field clicked.');
     }
     {
         const targetPage = page;
+        console.log('Filling in password...');
         await puppeteer.Locator.race([
             targetPage.locator('::-p-aria(Password)'),
             targetPage.locator('#login_passwd'),
@@ -105,9 +124,11 @@ const launchOptions = {  };
         ])
             .setTimeout(timeout)
             .fill(password);
+        console.log('Password filled.');
     }
     {
         const targetPage = page;
+        console.log('Clicking "Next" button...');
         const promises = [];
         const startWaitingForEvents = () => {
             promises.push(targetPage.waitForNavigation());
@@ -127,9 +148,11 @@ const launchOptions = {  };
               },
             });
         await Promise.all(promises);
+        console.log('"Next" button clicked.');
     }
     {
         const targetPage = page;
+        console.log('Clicking "Scope" radio button...');
         await puppeteer.Locator.race([
             targetPage.locator('::-p-aria([role=\\"row\\"]) >>>> ::-p-aria([role=\\"radio\\"])'),
             targetPage.locator('#pat_scope'),
@@ -143,9 +166,11 @@ const launchOptions = {  };
                 y: 5.7421875,
               },
             });
+        console.log('"Scope" radio button clicked.');
     }
     {
         const targetPage = page;
+        console.log('Clicking "patient/CarePlan.read" option...');
         await puppeteer.Locator.race([
             targetPage.locator('li:nth-of-type(8)'),
             targetPage.locator('::-p-xpath(//*[@id=\\"Rf1Vl4o\\"]/li[8])'),
@@ -159,9 +184,11 @@ const launchOptions = {  };
                 y: 14.0859375,
               },
             });
+        console.log('"patient/CarePlan.read" option clicked.');
     }
     {
         const targetPage = page;
+        console.log('Clicking "Allow" button...');
         const promises = [];
         const startWaitingForEvents = () => {
             promises.push(targetPage.waitForNavigation());
@@ -182,9 +209,12 @@ const launchOptions = {  };
               },
             });
         await Promise.all(promises);
+        console.log('"Allow" button clicked.');
     }
 
+    console.log('Closing browser...');
     await browser.close();
+    console.log('Browser closed.');
 
 })().catch(err => {
     console.error(err);

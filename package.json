@@ -1,0 +1,14 @@
+{
+  "name": "webchart-oauth-example",
+  "version": "1.0.0",
+  "description": "A Node.js application for WebChart FHIR interface with OAuth2 authentication",
+  "main": "webchart-example.js"
+  "scripts": {
+    "start": "node webchart-example.js"
+  },
+  "dependencies": {
+    "oauth": "^0.10.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

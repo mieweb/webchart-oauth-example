@@ -7,6 +7,7 @@ Example OAuth2 token
 
 This starts a webserver on localhost, allows someone to connect, then connects to fhirr4sandbox.webch.art and promoted the Authorization token to a session token.
 
+[![Watch the video](https://img.youtube.com/vi/-YaW9Qa5wvc/0.jpg)](https://youtu.be/-YaW9Qa5wvc)
 
 ## Documentation
 

@@ -21,7 +21,7 @@ const launchOptions = {  };
     const page = await browser.newPage();
     console.log('New page opened.');
 
-    const timeout = 10000;
+    const timeout = 5000;
     page.setDefaultTimeout(timeout);
 
     {

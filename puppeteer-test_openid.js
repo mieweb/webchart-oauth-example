@@ -1,5 +1,4 @@
-// Recording from Chrome Recording.  See https://www.youtube.com/watch?v=LBgzmqzp7ew
-// Exported by Doug Horner
+// Recording from Chrome Recording.  See -  https://youtu.be/jqhS8GgddO4
 
 const puppeteer = require('puppeteer'); // v23.0.0 or later
 

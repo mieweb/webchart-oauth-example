@@ -9,8 +9,8 @@ if (!password) {
     process.exit(1);
 }
 
-//const launchOptions = {  };
-const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'] };
+const launchOptions = {  };
+//const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'] };
 
 (async () => {
     console.log('Launching browser...');

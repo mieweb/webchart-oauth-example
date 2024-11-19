@@ -136,12 +136,9 @@ For detailed API and OAuth2 protocol documentation, refer to:
 Here is the video showing the code flow:
 
 - **OAuth**:
-
-
 [![Watch the video](https://img.youtube.com/vi/-YaW9Qa5wvc/0.jpg)](https://youtu.be/-YaW9Qa5wvc)
+
 - **OpenID**:
-
-
 [<img src="https://www.webchartnow.com/gfx/png/wc_logo_full.png" alt="OpenID Flow" title="OpenID Flow Diagram" width="480px" height="360px"/>](https://youtu.be/jqhS8GgddO4)
 ---
 

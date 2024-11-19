@@ -2,6 +2,7 @@
 // Exported by Doug Horner
 
 const puppeteer = require('puppeteer'); // v23.0.0 or later
+
 // get the passwor from the environment, abort if not set
 const password = process.env.PUPPET_PASS;
 if (!password) {
@@ -13,6 +14,7 @@ if (!password) {
 const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'] };
 
 (async () => {
+
     console.log('Launching browser...');
     const browser = await puppeteer.launch(launchOptions);
     console.log('Browser launched.');
@@ -36,33 +38,8 @@ const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'
     {
         const targetPage = page;
         console.log('Navigating to http://localhost:8080/...');
-        await targetPage.goto('http://localhost:8080/');
+        await targetPage.goto('http://localhost:8080/login');
         console.log('Navigation complete.');
-    }
-    {
-        const targetPage = page;
-        console.log('Waiting for "Get Code" button and clicking it...');
-        const promises = [];
-        const startWaitingForEvents = () => {
-            promises.push(targetPage.waitForNavigation());
-        }
-        await puppeteer.Locator.race([
-            targetPage.locator('::-p-aria(Get Code)'),
-            targetPage.locator('a'),
-            targetPage.locator('::-p-xpath(/html/body/a)'),
-            targetPage.locator(':scope >>> a'),
-            targetPage.locator('::-p-text(Get Code)')
-        ])
-            .setTimeout(timeout)
-            .on('action', () => startWaitingForEvents())
-            .click({
-              offset: {
-                x: 44,
-                y: 13,
-              },
-            });
-        await Promise.all(promises);
-        console.log('"Get Code" button clicked.');
     }
     {
         const targetPage = page;

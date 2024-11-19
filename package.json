@@ -3,17 +3,29 @@
   "version": "1.0.0",
   "description": "A Node.js application for WebChart FHIR interface with OAuth2 authentication",
   "main": "webchart-example.js",
+  "module": "webchart-example_openid.mjs",
+  "exports": {
+    ".": {
+      "require": "*.js",
+      "import": "*.mjs"
+    }
+  },
   "scripts": {
-    "start": "node webchart-example.js",
-    "test": "concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\""
+    "start": "bash -c 'select opt in \"Default app\" \"OpenID app\"; do case $opt in \"Default app\") concurrently --kill-others --success first \"node webchart-example.js\"; break;; \"OpenID app\") concurrently --kill-others --success first \"node webchart-example_openid.mjs\"; break;; esac; done'",
+    "test": "bash -c 'select opt in \"Default Test\" \"OpenID Test\"; do case $opt in \"Default Test\") concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\"; break;; \"OpenID Test\") concurrently --kill-others --success first \"node webchart-example_openid.mjs\" \"node puppeteer-test_openid.js\"; break;; esac; done'"
   },
   "dependencies": {
-    "oauth": "^0.10.0"
+    "oauth": "^0.10.0",
+    "openid-client": "^6.1.3"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.0.1",
-    "puppeteer": "^23.5.1"
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "puppeteer": "^23.5.1",
+    "puppeteer-video-recorder": "^1.0.5",
+    "winston": "^3.17.0"
   }
 }

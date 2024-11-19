@@ -12,8 +12,8 @@
   },
   "scripts": {
     "start": "bash -c 'select opt in \"Default app\" \"OpenID app\"; do case $opt in \"Default app\") concurrently --kill-others --success first \"node webchart-example.js\"; break;; \"OpenID app\") concurrently --kill-others --success first \"node webchart-example_openid.mjs\"; break;; esac; done'",
-    "test": "bash -c 'select opt in \"Default Test\" \"OpenID Test\"; do case $opt in \"Default Test\") concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\"; break;; \"OpenID Test\") concurrently --kill-others --success first \"node webchart-example_openid.mjs\" \"node puppeteer-test_openid.js\"; break;; esac; done'"
-  },
+    "test": "bash -c 'if [ \"$TEST_TYPE\" == \"openid\" ]; then concurrently --kill-others --success first \"node webchart-example_openid.mjs\" \"node puppeteer-test_openid.js\"; elif [ \"$TEST_TYPE\" == \"default\" ]; then concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\"; else select opt in \"Default Test\" \"OpenID Test\"; do case $opt in \"Default Test\") concurrently --kill-others --success first \"node webchart-example.js\" \"node puppeteer-test.js\"; break;; \"OpenID Test\") concurrently --kill-others --success first \"node webchart-example_openid.mjs\" \"node puppeteer-test_openid.js\"; break;; esac; done; fi'"
+},
   "dependencies": {
     "oauth": "^0.10.0",
     "openid-client": "^6.1.3"

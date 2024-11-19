@@ -41,6 +41,8 @@ jobs:
       - name: Run Default Test
         env:
           TEST_TYPE: default
+          PUPPET_PASS: ${{ secrets.PUPPET_PASS }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         run: npm test
 
       # Run the OpenID Test

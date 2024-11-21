@@ -36,7 +36,7 @@ const launchOptions = {  };
     }
     {
         const targetPage = page;
-        console.log('Navigating to http://localhost:8080/...');
+        console.log('Navigating to http://localhost:8080/login...');
         await targetPage.goto('http://localhost:8080/login');
         console.log('Navigation complete.');
     }

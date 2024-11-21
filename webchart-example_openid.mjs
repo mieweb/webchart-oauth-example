@@ -22,7 +22,7 @@ const logger = winston.createLogger({
 
 /* OAuth Setup Details */
 // Fetch OAuth client details from environment variables for security
-const clientID = process.env.CLIENT_ID;
+const clientID = 'MIE-localhost';
 const clientSecret = process.env.CLIENT_SECRET;
 const redirectUri = 'http://localhost:8080/code';
 let serverMetadata;

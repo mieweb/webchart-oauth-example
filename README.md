@@ -108,7 +108,7 @@ npm test
 
 You’ll be prompted to select one of the following:
 1. **Default Test**: Tests the Simple OAuth2 flow.
-2. **OpenID Test**: Tests the OpenID Connect flow.
+2. **OpenID Test**: Test the OpenID Connect flow.
 
 ### Puppeteer Integration
 Automated tests are implemented using Puppeteer:

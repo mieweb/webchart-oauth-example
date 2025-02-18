@@ -13,3 +13,7 @@ This starts a webserver on localhost, allows someone to connect, then connects t
 
 * https://docs.webchartnow.com/resources/system-specifications/fhir-application-programming-interface-api/oauth-2.0-tutorial/
 * https://docs.enterprisehealth.com/resources/system-specifications/fhir-application-programming-interface-api/oauth-2.0-tutorial/
+
+
+## Logs
+* Updated FHIR Sandbox user pass

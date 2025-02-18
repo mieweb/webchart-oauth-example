@@ -9,7 +9,10 @@ if (!password) {
     process.exit(1);
 }
 
-const launchOptions = {  };
+const launchOptions = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+};
+
 //const launchOptions = { headless: false, slowMo: 10,  args: ['--start-maximized'] };
 
 (async () => {
